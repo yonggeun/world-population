@@ -44,15 +44,13 @@ class Data {
 
     // copy the columns
     for (int i = 0; i < T.getColumnCount(); i++) {
-      _t.addColumn(T.getColumnTitle(i).substring(2), int(T.getColumnTitle(i).substring(0, 1))); 
-      //println("int(T.getColumnTitle(i).charAt(0)) : ",int(T.getColumnTitle(i).substring(0,1)));
+      _t.addColumn(T.getColumnTitle(i).substring(2), int(T.getColumnTitle(i).substring(0, 1)));
     }
     _t.addColumn ("cx", Table.FLOAT);
     _t.addColumn ("cy", Table.FLOAT);
 
     // copy the rows
     for (TableRow _r : T.rows()) {
-      //println(row.getString(0) + " (" + row.getInt(2) + ") \t\t\t" + str(row.getFloat(3)));
       TableRow _newRow = _t.addRow(); 
 
       _newRow.setString  (0, _r.getString(0)); 
@@ -64,7 +62,6 @@ class Data {
       _newRow.setFloat (5, paper.getCentroidFromISO(_r.getString(0)).y);
     }
 
-    //t.print();
     println("parse done with ", _t.getRowCount(), " rows");
     rawTableLoaded = true;
 
@@ -100,8 +97,7 @@ class Data {
         }
 
         _annals.put(_year, _annal);
-      } else {
-        //println("isolated row occured!");
+      } else { // in case of isolated row
       }
     }
     annalsLoaded = true;

@@ -8,3 +8,20 @@ application.windows32
 application.windows64
 application.macosx
 out
+#folders
+font/
+*/font/
+LOG-CSV/
+LOG-JSON/
+/streaming/
+streaming/
+map-backups/
+dev/
+#priavate files
+*.key
+#design files
+*.ai
+*.ttf
+*.vlw
+#google files
+*.gsheet

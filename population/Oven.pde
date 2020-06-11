@@ -24,7 +24,7 @@ class Oven { //<>// //<>//
   Theme theme;
 
   Oven (int Plates, float posY) {
-    //annals = Annals; // just link thus this table should not be modified.
+
     plates = Plates;
     distances = new float[plates-1];
     pies = new HashMap<String, Pie>();
@@ -102,8 +102,6 @@ class Oven { //<>// //<>//
       }
     }
 
-    //mold.print();
-
     //  -------------------------  end of making mold  -------------------------  
     // SORT TABLE ROWS BY VALUE (POPULATION) IN DECENDING ORDER
     thisYear.sortReverse("value"); 
@@ -111,6 +109,7 @@ class Oven { //<>// //<>//
   }
 
   void update () { // REFRESH THE VARIABLES IN PIES BASED ON THE TABLE VALUES. 
+  
     // GET THE TARGET DISTANCES 
     for (int l = 0; l < plates-1; l++) {
       TableRow tr0 = mold.getRow (l);
@@ -150,9 +149,10 @@ class Oven { //<>// //<>//
     for (int n = plates; n < mold.getRowCount(); n++) {
       TableRow tr = mold.getRow (n);
       Pie _p = pies.get(tr.getString ("iso"));
-      //_p.config (0, Y, getRadius (tr.getFloat("value")), false); //  -------------------------   -------------------------
+
       _p.config (0, Y, 1, false); //  -------------------------   -------------------------
     }
+    
     // push the current rank to each pie.
     for (int q = 0; q < thisYear.getRowCount(); q++) {
       TableRow tr = thisYear.getRow (q);
@@ -183,19 +183,13 @@ class Oven { //<>// //<>//
   }
 
   float getRadius (float V) {
-    //float _r = 0.0;
     float _dotArea = pow (paper.dotSizeEnd / 2, 2) * PI; // compute a circle
-    //float _dotArea = pow (paper.dotSizeEnd, 2); // compute as a rect
     float _totalArea = _dotArea * V / paper.renderScale;
-    //float _r = sqrt(_totalArea / 3.0) * pieScale;
-    //return _r;
     return sqrt(_totalArea / 3.0) * pieScale;
   }
 
   float getWidth () {
     float _w = 0.0;
-    //_w = getPieFromRank (plates - 1).x - getPieFromRank(0).x; 
-    //W = _w;
     for (int i = 0; i < distances.length; i++) {
       _w += abs(distances[i]);
     }

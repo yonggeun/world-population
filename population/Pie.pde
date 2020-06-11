@@ -101,8 +101,7 @@ class Pie {
     fill (red(c), green(c), blue(c), a);
     ellipseMode(CORNER);
     ellipse (x - r, y, r*2, -r*2);
-    //ellipse (x - r, y, r*2*s.width / 500, -r*2 * s.width / 500);
-
+    
     // Draw BEzier Curve 
 
     if (visible) {
@@ -115,7 +114,8 @@ class Pie {
           _shape = paper.map.children[i];
         }
       }
-      // line color
+      
+      // line color with other try-outs. 
       // lineColor = color (255, 255, map (rank, 0, paper.oven.plates, 0, 255), map (rank, 0, paper.paper.oven.plates, 128, 64));
       // lineColor = color (255, 255, map (rank, 0, paper.oven.plates, 192, 255), map (rank, 0, paper.oven.plates, 90, 60));
       lineColor = color (red(theme.c_pieCurve), 
@@ -123,22 +123,19 @@ class Pie {
         map (rank, 0, paper.oven.plates, blue (theme.c_pieCurve) * 0.75, blue (theme.c_pieCurve)), 
         map (rank, 0, paper.oven.plates, alpha (theme.c_pieCurve), alpha (theme.c_pieCurve) * 0.6)
         );
+        
       // Draw the territory 
       noStroke();
       //fill(map (rank, 0, paper.oven.plates, s.vgrid * 0.05, s.vgrid * 0.025));
       fill (lineColor);
       strokeWeight(map (rank, 0, paper.oven.plates, s.vgrid * 0.05, s.vgrid * 0.025));
-
-      //stroke(lineColor);
       noFill();
-      //_shape.draw();
 
       // Draw bezier
-      //stroke(128);
       stroke(lineColor);
-      //strokeWeight(0.5);
       strokeWeight (map (rank, 0, paper.oven.plates, 1, 0.5));
       noFill();
+
       // curve point from the pie
       float a1x = x;
       float a1y = y - (2 * r) - s.vgrid / 4.5;
@@ -146,7 +143,6 @@ class Pie {
       //float maxD = paper.oven.getRadius (paper.oven.thisYear.getRow(0).getFloat("value")) / oven.pieScale;
       float maxD = s.vgrid / 2.5;
       float maxX = paper.oven.mold.getRow(paper.oven.plates-1).getFloat("cx");
-
       float A = map (abs(a2x), 0, maxX, s.vgrid * 0.3, s.vgrid * 1.0);
 
       bezier(a1x, a1y, 
@@ -165,7 +161,6 @@ class Pie {
       textFont(theme.RS);
       float _textSize = 1;
       textSize (_textSize);
-      //String str = nfc(floor(oven.thisYear.findRow (iso, "iso").getFloat("value") / sampleScale));
       String str = nfc(floor(
         (paper.oven.thisYear.findRow (iso, "iso").getFloat("value") + 
         paper.oven.mold.findRow (iso, "iso").getFloat("velocity") * progress) / paper.renderScale
@@ -200,8 +195,6 @@ class Pie {
         s.write (x, y - r*0.9, CENTER, TOP, str2, theme.RS_T, _textSize2, _textSize2 / 2, theme.c_pieLabelPop);
       }
 
-
-
       // Country name
       //String str3 = join(split(oven.thisYear.findRow (iso, "iso").getString("name"), " "), "\n");
       String str3 = s.getDoublelineString(oven.thisYear.findRow (iso, "iso").getString("name"));
@@ -209,7 +202,6 @@ class Pie {
       s.write (x, 
         y + s.vgrid / 20 + ((oven.mold.findRowIndex (iso, "iso") % 2 * theme.fontSize.get("pieISO"))) * 3.0, 
         CENTER, TOP, str3, theme.RS, theme.fontSize.get("pieISO"), theme.fontSize.get("pieISO")*1.2, theme.c_pieLabel);
-      //s.write (x, y + grid/20, CENTER, TOP, str3, RS, fontSize.get("pieISO"), fontSize.get("pieISO"), color(204));
     }
   }
   void setRank (int R) {

@@ -1,5 +1,4 @@
 class Paper {
-
   //
   Theme theme;
   Oven oven;
@@ -55,29 +54,23 @@ class Paper {
 
       int _maxNumberOfDots = 0;
       _maxNumberOfDots = ceil (DATA.getLocalMaxPopulation(_iso));
-      //println (_iso, " max is ", _maxNumberOfDots);
-
-      //if (_maxNumberOfDots == 0) {
-      //  println (_iso, " max is 0.");
-      //}
-
+      
       ArrayList<Dot> _dots = new ArrayList <Dot>();
       RPoint _dot;
 
       if (_maxNumberOfDots != 0) {
         while (_maxNumberOfDots > 0) {
 
-          // this is the best!!
+          // other way to calculate the scattered dot
           //float _x = map (noise(_xoff), 0.25, 0.75, x, x+w);
           //float _y = map (noise(_yoff), 0.25, 0.75, y, y+h);
 
-          //1
+          // 1 - optimal
           float _dotx = map (noise(_xoff), 0.25, 0.75, _x, _x + _w);
           float _doty = map (noise(_yoff), 0.25, 0.75, _y, _y + _h);
           _dot = new RPoint (_dotx, _doty);
 
           if (map.children[i].contains(_dot)) {
-            //_dots.add(new Dot (_dotx, _doty, dotSizeBegin, dotSizeEnd, 255));
             _dots.add(new Dot (_dotx, _doty, dotSizeBegin, dotSizeEnd));
             _maxNumberOfDots --;
           }
@@ -85,7 +78,7 @@ class Paper {
           _yoff += 2.5;
         }
         dotMap.put(map.children[i].name, _dots);
-        //println ("_dots ", _dots);
+        
       } else if (_maxNumberOfDots == 0) {
 
         dotMap.put(map.children[i].name, null);

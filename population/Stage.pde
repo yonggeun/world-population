@@ -75,7 +75,11 @@ class Stage {
   void capture (String _ext) {
     if (isRecording) {
       String _path = path.get("sequence")+"########."+_ext;
+      //String _pathSVG = path.get("sequence")+"########."+"svg";
+
       saveFrame(_path);
+            saveFrame(_path);
+   
       trace("01", "Recorder saved this frame at " + path.get("sequence") +nf(frameCount, 8)+"."+_ext);
     }
   }
@@ -108,9 +112,7 @@ class Stage {
         _copied.reverse();
         _output += "\n" + _copied.get(j);
       }
-      //trim(_output);
-      //colorMode(HSB, 360, 100, 100, 100); 
-
+      
       textSize(10);
       fill(200);
       textAlign(RIGHT, BOTTOM);

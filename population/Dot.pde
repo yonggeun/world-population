@@ -13,9 +13,7 @@ class Dot {
   float aMin;
   float dotSizeEnd;
   float amt;
-  // constructor
-  //Dot (float X, float Y, float DotSizeBegin, float DotSizeEnd, float A) {
-
+  
   Dot (float X, float Y, 
     float DotSizeBegin, float DotSizeEnd) {
     x = X;
@@ -55,16 +53,13 @@ class Dot {
     }
 
     if (amt < 1) {
-      //amt += 0.0025;
-      //
       amt += map(255.0 / duration, 0.0, 255.0, 0.0, 1.0);
     }
   }
   void display () {
     // float _blue = map (a1, 255, aMin, 0, 255);
     color _c_begin2end = color (lerp (r1, r2, amt), lerp(g1, g2, amt), lerp(b1, b2, amt), lerp(a1, a2, amt));
-    //color _c_d2 = lerpColor(theme.c_dotLine, theme.c_dotLineEnd, amt);
-    color _c_d2        = color (lerp (r3, r4, amt), lerp(g3, g4, amt), lerp(b3, b4, amt), lerp(a3, a4, amt));
+    //color _c_d2        = color (lerp (r3, r4, amt), lerp(g3, g4, amt), lerp(b3, b4, amt), lerp(a3, a4, amt));
 
     noStroke();
     if (theme.style.equals("day")) {
@@ -72,12 +67,6 @@ class Dot {
       ellipse  (x, y, d * 1.5, d * 1.5);
     }
     ellipseMode(CENTER);
-    // ellipse 2
-    // fill(0, 0, 0, map(a1, 255, aMin, 255, 0));
-    //fill (_c_d2);
-    //ellipse (x, y, d2, d2);
-    // ellipse 1
-    // fill(255, 255, _blue, a1);
     fill (_c_begin2end);
     ellipse (x, y, d, d);
   }

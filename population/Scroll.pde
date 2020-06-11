@@ -63,20 +63,17 @@ class Scroll {
     for (TableRow _r : _t.rows()) {
       int year = 0;
       String text = ""; 
-      //println("R.findRow(_r.getInt (0) : ", R.findRow(str(_r.getInt (0)), 0));
+      
       if (R.findRow(str(_r.getInt (0)), 0) == null) {
         for (TableRow __r : _t.findRows(str(_r.getInt(0)), 0)) {
           year = __r.getInt(0);
           text += __r.getString(1) + " ";
         }
-        //if (text.charAt(0) == '\"' && text.charAt(text.length()-1) == '\"') {
+      
         String _text = trim(text);
         String text2 = _text;
-        //println (_text.charAt(_text.length()-1));
+        
         if (_text.charAt(0) == '\"' && _text.charAt(_text.length()-1) == '\"') {
-          //if (_text.charAt(0) == '\"') {
-
-          //println (text);
           text2 = text.substring (1, text.length()-2);
         }
         TableRow _newRow = R.addRow(); 
@@ -85,8 +82,7 @@ class Scroll {
       }
     }
     R.sort(0);
-    //println ("check the table");
-    //R.print();
+    
     data = R;
     alpha = new float[data.getRowCount()];
   }
@@ -137,6 +133,7 @@ class Scroll {
     pushMatrix();
     translate (x, y);
     pushMatrix ();
+    
     // scroll the texts.
     translate (0, -yoff);
     for (int i = 0; i < data.getRowCount(); i++) {

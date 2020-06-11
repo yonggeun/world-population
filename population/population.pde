@@ -1,12 +1,14 @@
-// The source code is under MIT licencce.  //<>// //<>// //<>// //<>// //<>//
+import processing.svg.*; //<>// //<>// //<>//
+
+// The source code is under MIT licencce.  //<>// //<>// //<>// //<>// //<>// //<>//
 // Yonggeun Kim, vizualizer.com / vizualizer@gmail.com
-// 2020 15th May 2020
+// 11 June 2020
 
 // https://worldpopulationhistory.org/map/
 import geomerative.*;  
 import java.util.Map;
 
-boolean zen = false;
+boolean zen = true;
 boolean movieIsOver = false;
 boolean movieIsReady = false;
 
@@ -23,9 +25,7 @@ float   progress;
 //
 float renderScale = 10; // 10 is optimal.
 
-Stage s = new Stage (1920, framerate, true, "/waterfall/processing/");
-//Stage s = new Stage (5120, framerate, true, "/waterfall/processing/");
-//Stage s = new Stage (1280, framerate, false, "/waterfall/processing/");
+Stage s = new Stage (1920, framerate, false, "/waterfall/processing/");
 
 Data data;
 Paper paper;
@@ -36,7 +36,7 @@ Scroll scroll;
 
 public void settings() {
   fullScreen();
-  size (s.width, s.height, FX2D);
+  size (s.width, s.height);
   smooth(2);
 }
 
@@ -61,8 +61,6 @@ void setup() {
 
   // load map
   //Paper (float RenderScale, float DotSizeBegin, float DotSizeEnd) {
-  //paper = new Paper (renderScale, s.vgrid / 10, s.vgrid * 0.025);
-  //paper = new Paper (renderScale, s.vgrid / 35, s.vgrid * 0.005); /// 0.0125
   paper = new Paper (renderScale, s.vgrid / 35, float (s.width) / 2000); /// 0.0125
 
   if (zen) {
@@ -110,7 +108,6 @@ void getDotMap () {
 void draw() {
   // get mouse coord
   // RPoint m = new RPoint(mouseX-width/2, mouseY-height/2);
-
   translate(width/2, height/2);
   background(theme.c_bg);
 
@@ -258,40 +255,7 @@ void printMovieSettings () {
   }
 }
 
+
 void keyPressed(KeyEvent e) {
   s.screenshot(e, "tga");
-  //if (key == CODED) {
-  //  if (keyCode == UP) {
-  //    if (annum < 2019) {
-  //      annum++;
-  //    } else {
-  //      annum = 2019;
-  //    }
-  //  } else if (keyCode == DOWN) {
-  //    if (annum > 1800) {
-  //      annum--;
-  //    } else {
-  //      annum = 1800;
-  //    }
-  //  } 
-  //  println("annum ", annum);
-  //}
-}
-
-// obsolete
-void mousePressed() {
-  //ignoringStyles = !ignoringStyles;
-  //RG.ignoreStyles(ignoringStyles);
-}
-
-void mouseWheel(MouseEvent event) {
-  //float e = event.getCount();
-  ////println(e);
-  //annum += e/10;
-  //if (annum > 2019) {
-  //  annum = 2019;
-  //} else if (annum < 1800) {
-  //  annum = 1800;
-  //}
-  //println("annum ", annum);
 }
