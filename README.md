@@ -1,6 +1,6 @@
 # World Population Growth: A information visualization with pointillistic representation 
 
-[![](https://github.com/yonggeun/world-population/blob/master/screenshot/FHD-2020-6-6 18 05 17 00020080.png)
+![screenshot](https://github.com/yonggeun/world-population/blob/master/screenshot/FHD-2020-6-6%2018%2005%2017%2000020080.png)
 
 ## 1. Introduction
 
