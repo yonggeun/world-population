@@ -143,6 +143,6 @@ class Scroll {
       text(data.getString (i, "text"), 0, (vdistance * i), w, h);
     }
     popMatrix ();
-    popMatrix();
+    popMatrix ();
   }
 }

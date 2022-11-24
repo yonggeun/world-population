@@ -1,6 +1,6 @@
-import processing.svg.*; //<>// //<>// //<>//
+import processing.svg.*; //<>// //<>//
 
-// The source code is under MIT licencce.  //<>// //<>// //<>// //<>// //<>// //<>//
+// The source code is under MIT licencce.  //<>// //<>// //<>// //<>// //<>//
 // Yonggeun Kim, vizualizer.com / vizualizer@gmail.com
 // 11 June 2020
 
@@ -8,7 +8,7 @@ import processing.svg.*; //<>// //<>// //<>//
 import geomerative.*;  
 import java.util.Map;
 
-boolean zen = true;
+boolean zen = false;
 boolean movieIsOver = false;
 boolean movieIsReady = false;
 
@@ -25,7 +25,7 @@ float   progress;
 //
 float renderScale = 10; // 10 is optimal.
 
-Stage s = new Stage (1920, framerate, false, "/waterfall/processing/");
+Stage s = new Stage (1980, framerate, false, "/waterfall/processing/");
 
 Data data;
 Paper paper;
@@ -35,16 +35,16 @@ Theme theme;
 Scroll scroll;
 
 public void settings() {
-  fullScreen();
+  // fullScreen();
   size (s.width, s.height);
-  smooth(2);
+  smooth(3);
 }
 
 void setup() {
   frameRate(framerate);
 
   s.setGrid (8, 6); //dotSize = grid / 10;
-  theme = new Theme ("day");
+  theme = new Theme ("night");
   if (zen) {
     durationInSec = 1.27;
   } else {
